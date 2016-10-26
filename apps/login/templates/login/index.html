@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login/Registration</title>
+  </head>
+  <body>
+    <h2> Welcome!</h2>
+    <h3> Register</h3>
+    <form action = '/register' method = "post">
+      {% csrf_token %}
+      {%if errors%}
+        {{errors.name}}
+      {% endif %}
+      <p> Name : <input type = "text" name = "name"></p>
+      {%if errors%}
+        {{errors.username}}
+      {% endif %}
+      <p> Username: <input type = "text" name = "username"></p>
+      {%if errors%}
+        {{errors.email}}
+      {% endif %}
+      <p> Email: <input type = "email" name = "email"></p>
+      {%if errors%}
+        {{errors.password}}
+      {% endif %}
+      <p> Password: <input type = "password" name = "pw"></p>
+      <p> Confirm Password: <input type = "password" name = "confirm_pw"></p>
+      {%if errors%}
+        {{errors.bday}}
+      {% endif %}
+      <p> Birthday: <input type ="date" name ="bday"></p>
+      <input type= "submit" value = "Register">
+    </form>
+    <br>
+    <h3> Login</h3>
+    <form action = "/login" method = "post">
+      {% csrf_token %}
+      {%if errors%}
+        {{errors.name}}
+      {% endif %}
+      <p> Userame: <input type = "text" name = "username"></p>
+      {%if errors%}
+        {{errors.name}}
+      {% endif %}
+      <p> Password: <input type = "password" name = "pw"></p>
+      <input type = "submit" value ="login">
+    </form>
+  </body>
+</html>
